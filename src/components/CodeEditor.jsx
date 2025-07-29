@@ -110,7 +110,7 @@ const CodeEditor = ({ inputs, level, time }) => {
         }
 
         const trueValues = results.filter(res => res.isCorrect);
-        if (trueValues.length === 6) {
+        if (trueValues.length === 8) {
             if (!localStorage.getItem(`${level}-time`)) {
                 localStorage.setItem(`${level}-time`, formatTime(time));
             }

@@ -15,15 +15,15 @@ const Dashboard = () => {
         // Set input based on level
         if (level === 'easy') {
             setInputs(
-                Array.from({ length: 6 }, () => Math.floor(Math.random() * 1000) + 1)
+                Array.from({ length: 8 }, () => Math.floor(Math.random() * 1000) + 1)
             ); // Random input for easy level
         } else if (level === 'medium') {
             setInputs(
-                Array.from({ length: 6 }, () => Math.floor(Math.random() * 100) + 1)
+                Array.from({ length: 8 }, () => Math.floor(Math.random() * 100) + 1)
             ); // Random input for medium level
         } else if (level === 'hard') {
             setInputs(
-                Array.from({ length: 6 }, () => Math.floor(Math.random() * 1000) + 1)
+                Array.from({ length: 6 }, () => Math.floor(Math.random() * 100000) + 1).concat([153, 54748])
             ); // Random input for hard level
         }
     }, [level]);
