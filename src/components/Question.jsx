@@ -1,7 +1,4 @@
-import React, { useRef } from 'react';
-import Squares from './animations/squares';
-import Galaxy from './animations/galaxy';
-import Clock from './analogClock';
+import React, { useEffect, useRef, useState } from 'react';
 import AnalogClock from './analogClock';
 import Easy from './questions/Easy';
 import Medium from './questions/Medium';
@@ -9,6 +6,13 @@ import Hard from './questions/Hard';
 
 const Question = ({ level = 'easy' }) => {
     const containerRef = useRef();
+    const [isSolved, setIsSolved] = useState(false);
+
+    useEffect(()=>{
+        if (localStorage.getItem(`${level}-time`)) {
+            setIsSolved(true);
+        }
+    }, [level]);
 
     // Function to render the appropriate question component based on level
     const renderQuestionComponent = () => {
@@ -46,7 +50,13 @@ const Question = ({ level = 'easy' }) => {
             <AnalogClock containerRef={containerRef} />
 
             <div className='absolute top-0 p-4'>
-                <h2 className={`text-xl font-semibold ${levelStyle.color} mb-3`}>{levelStyle.text}</h2>
+                <div className='flex items-center justify-between'>
+                    <h2 className={`text-xl font-semibold ${levelStyle.color} mb-3`}>{levelStyle.text}</h2>
+                    {isSolved && (
+                        <div className="text-black px-2 py-1 rounded-md mb-2 font-bold bg-green-400">Solved</div>
+                    )}
+                </div>
+
                 <div className='text-white'>
                     {renderQuestionComponent()}
                 </div>

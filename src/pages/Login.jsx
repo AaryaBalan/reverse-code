@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import SplitText from '../components/animations/split-text';
 import LetterGlitch from '../components/animations/letterGlitch';
 import { Link } from 'react-router-dom';
 

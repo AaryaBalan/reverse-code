@@ -80,7 +80,7 @@ const CodeEditor = ({ inputs, level, time }) => {
             // setError to error
             if (!data.run.stdout.length) {
                 setError(data.run.stderr);
-            }else{
+            } else {
                 setError('');
             }
 
@@ -110,13 +110,9 @@ const CodeEditor = ({ inputs, level, time }) => {
         }
 
         const trueValues = results.filter(res => res.isCorrect);
-        if (trueValues.length === 5) {
+        if (trueValues.length === 6) {
             if (!localStorage.getItem(`${level}-time`)) {
                 localStorage.setItem(`${level}-time`, formatTime(time));
-            }
-
-            if (localStorage.getItem('easy-time') && localStorage.getItem('medium-time') && localStorage.getItem('hard-time')) {
-                window.location.href = '/completed';
             }
         }
 
@@ -226,16 +222,31 @@ const CodeEditor = ({ inputs, level, time }) => {
 
             {(outputResults.length > 0 && error.length === 0 && isExecuting === false) && (
                 <div className="bg-[#101828] text-white mt-4 p-4 rounded-lg max-h-96 overflow-auto border border-cyan-400">
-                    {outputResults.map((res, index) => (
-                        <pre key={index} className="flex flex-col gap-y-2 text-lg bg-gray-800 p-4 border border-gray-700 my-5 rounded-md">
-                            <span className='text-[#05df72]'>Testcase {index + 1}</span>
-                            <span>Input = {res.input}</span>
-                            <span>Expected Output: {res.expected}</span>
-                            <span>Actual Output: {res.output}</span>
-                            <span>{res.isCorrect ? '✅ Correct Output' : '❌ Incorrect Output'}</span>
-                        </pre>
-                    ))}
+                    {outputResults.map((res, index) => {
+                        if (index < 5) {
+                            return (
+                                <pre key={index} className="flex flex-col gap-y-2 text-lg bg-gray-800 p-4 border border-gray-700 my-5 rounded-md">
+                                    <span className='text-[#05df72]'>Testcase {index + 1}</span>
+                                    <span>Input = {res.input}</span>
+                                    <span>Expected Output: {res.expected}</span>
+                                    <span>Actual Output: {res.output}</span>
+                                    <span>{res.isCorrect ? '✅ Correct Output' : '❌ Incorrect Output'}</span>
+                                </pre>
+                            );
+                        }
+                        else {
+                            return (
+                                <pre key={index} className="flex flex-col gap-y-2 text-lg bg-[#131324] p-4 border border-gray-700 my-5 rounded-md">
+                                    <span className='text-[#05df72]'>Testcase {index + 1}</span>
+                                    <span>Hidden Testcase 🔒</span>
+                                    <span>{res.isCorrect ? '✅ Correct Output' : '❌ Incorrect Output'}</span>
+                                </pre>
+                            );
+                        }
+                    })}
+                    <a href='/completed' className='block w-full text-end text-cyan-400 underline cursor-pointer'>View your Progress</a>
                 </div>
+
             )}
         </div>
     );

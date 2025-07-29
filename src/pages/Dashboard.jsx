@@ -6,51 +6,7 @@ import Timer from '../components/Timer';
 import { useParams } from 'react-router-dom';
 
 const Dashboard = () => {
-    // Add confirmation dialog for page refresh/close and prevent refresh shortcuts
-    // useEffect(() => {
-    //     const handleBeforeUnload = (e) => {
-    //         e.preventDefault();
-    //         alert('Page refresh is disabled to protect your progress!');
-    //         return false;
-    //     };
 
-    //     const handleKeyDown = (e) => {
-    //         // Prevent F5 refresh
-    //         if (e.key === 'F5') {
-    //             e.preventDefault();
-    //             alert('Page refresh is disabled to protect your progress!');
-    //             return false;
-    //         }
-
-    //         // Prevent Ctrl+R refresh
-    //         if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-    //             e.preventDefault();
-    //             alert('Page refresh is disabled to protect your progress!');
-    //             return false;
-    //         }
-
-    //         // Prevent Ctrl+Shift+R hard refresh
-    //         if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'R') {
-    //             e.preventDefault();
-    //             alert('Page refresh is disabled to protect your progress!');
-    //             return false;
-    //         }
-    //     };
-
-    //     const handleContextMenu = (e) => {
-    //         e.preventDefault(); // Prevent right-click context menu which could have refresh option
-    //     };
-
-    //     window.addEventListener('beforeunload', handleBeforeUnload);
-    //     document.addEventListener('keydown', handleKeyDown);
-    //     document.addEventListener('contextmenu', handleContextMenu);
-
-    //     return () => {
-    //         window.removeEventListener('beforeunload', handleBeforeUnload);
-    //         document.removeEventListener('keydown', handleKeyDown);
-    //         document.removeEventListener('contextmenu', handleContextMenu);
-    //     };
-    // }, []); 
     const { level } = useParams()
     const [inputs, setInputs] = React.useState([0]);
     const [time, setTime] = React.useState(0);
@@ -59,15 +15,15 @@ const Dashboard = () => {
         // Set input based on level
         if (level === 'easy') {
             setInputs(
-                Array.from({ length: 5 }, () => Math.floor(Math.random() * 1000) + 1)
+                Array.from({ length: 6 }, () => Math.floor(Math.random() * 1000) + 1)
             ); // Random input for easy level
         } else if (level === 'medium') {
             setInputs(
-                Array.from({ length: 5 }, () => Math.floor(Math.random() * 100) + 1)
+                Array.from({ length: 6 }, () => Math.floor(Math.random() * 100) + 1)
             ); // Random input for medium level
         } else if (level === 'hard') {
             setInputs(
-                Array.from({ length: 5 }, () => Math.floor(Math.random() * 1000) + 1)
+                Array.from({ length: 6 }, () => Math.floor(Math.random() * 1000) + 1)
             ); // Random input for hard level
         }
     }, [level]);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const Timer = ({ setTime, time }) => {
 
@@ -26,7 +26,7 @@ const Timer = ({ setTime, time }) => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, []); // Empty dependency array ensures this runs only once on mount
+    }, [setTime]); // Empty dependency array ensures this runs only once on mount
 
     const formatTime = (seconds) => {
         const hours = Math.floor(seconds / 3600);
