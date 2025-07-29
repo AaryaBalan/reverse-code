@@ -51,8 +51,8 @@ const CompletionStats = () => {
                     zIndex: 2,
                 }}
                 className="bg-[#101828] rounded-2xl shadow-lg p-10 w-full max-w-xl border-2 border-cyan-400">
-                <h1 className="text-3xl font-bold text-cyan-400 mb-6 text-center">🎉 Congratulations!</h1>
-                <p className="text-lg mb-8 text-center">You completed all coding levels!</p>
+                <h1 className="text-3xl font-bold text-cyan-400 mb-6 text-center">🎉 Asymmetric's Tech Fiesta</h1>
+                <p className="text-lg mb-8 text-center">Your Progress ⏳!</p>
                 <div className="space-y-4 mb-8">
                     <div className="flex justify-between items-center bg-[#131324] p-4 rounded-lg border border-green-400">
                         <span className="font-semibold text-green-400 w-20">Easy</span>
